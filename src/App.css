@@ -2,18 +2,21 @@
   text-align: center;
 }
 
-.image-grid{
+.image-grid {
   list-style: none;
 }
 
-.image-grid li{
+.image-grid li {
  display:inline-block;
+ list-style:none;
  padding:5px;
 }
 
-.image-grid li img{
+.image-grid li img {
   max-height:200px;
   border: 1px solid #000000;
 }
+
+
 
 

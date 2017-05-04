@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Unsplash, { toJson } from "unsplash-js";
 import { ImageGallery } from './components/ImageGallery';
 import { ImageGalleryForm } from './components/ImageGalleryForm';
+import { ModalWindow } from './components/ModalWindow';
 import RandomNum from "./utils/RandomNum";
 import * as constants from './config/Config';
 
@@ -11,8 +12,10 @@ class App extends Component {
 
   state = {
     items: [],
-    currentGallery: constants.GALLERY_CHOICE_DEFAULT
-
+    currentGallery: constants.GALLERY_CHOICE_DEFAULT,
+    showModal:false,
+    modalImage:''
+    
   };
 
   
@@ -40,6 +43,37 @@ class App extends Component {
       currentGallery: ''
     })
   }
+  // show Image Clicked
+  showModalHandler = (evt) => {
+    evt.preventDefault();
+   
+    this.setState({
+      modalImage : evt.target.getAttribute('src').toString()
+    })
+ 
+    this.showModal();
+  }
+  
+  hideModalHandler = (evt) => {
+    evt.preventDefault();
+    this.hideModal();
+  }
+  
+//hide modal
+  hideModal = () => {
+    this.setState({
+      showModal:false
+    });
+  }
+
+//show Modal
+  showModal = () =>{
+    this.setState({
+      showModal:true
+    })
+  }
+
+  
 
 
   componentDidMount() {
@@ -64,20 +98,20 @@ class App extends Component {
 
         let items = json.results;
         this.setState({ items })
-
+       // console.log(items);
       });
   }
 
 
   render() {
     const submitHandler = this.state.currentGallery ? this.handleSubmit : this.handleEmptySubmit
-
+   // const imageHandler = this.state.showModal ? this.showModal : this.hideModal;
     return (
       <div className="App">
         <ImageGalleryForm handleInputChange={this.handleInputChange}
           handleSubmit={submitHandler} />
-        <ImageGallery items={this.state.items} />
-
+        <ImageGallery items={this.state.items} imageClicked={this.showModalHandler} modalImg={this.state.modalImage}/>
+        <ModalWindow modal={this.state.showModal} modalHandler={this.hideModalHandler} modalImage={this.state.modalImage}/>
       </div>
     );
   }
