@@ -14,10 +14,11 @@ class App extends Component {
     items: [],
     currentGallery: constants.GALLERY_CHOICE_DEFAULT,
     showModal:false,
-    modalImage:''
-    
+    modalImage:'',
+    userName:''
   };
-
+  
+  
   
   randomNum = () =>{
     let randNum = new RandomNum(constants.RANGE_START, constants.RANGE_END);
@@ -47,10 +48,13 @@ class App extends Component {
   showModalHandler = (evt) => {
     evt.preventDefault();
    
+   let index = Number(evt.currentTarget.getAttribute('id'))
+    
     this.setState({
-      modalImage : evt.target.getAttribute('src').toString()
-    })
- 
+      modalImage : evt.target.getAttribute('src').toString(),
+      userName: this.state.items[index].user.name
+    });
+
     this.showModal();
   }
   
@@ -74,7 +78,7 @@ class App extends Component {
   }
 
   
-
+  
 
   componentDidMount() {
 
@@ -98,20 +102,21 @@ class App extends Component {
 
         let items = json.results;
         this.setState({ items })
-       // console.log(items);
+        
       });
   }
 
 
   render() {
     const submitHandler = this.state.currentGallery ? this.handleSubmit : this.handleEmptySubmit
-   // const imageHandler = this.state.showModal ? this.showModal : this.hideModal;
+  
     return (
       <div className="App">
         <ImageGalleryForm handleInputChange={this.handleInputChange}
           handleSubmit={submitHandler} />
         <ImageGallery items={this.state.items} imageClicked={this.showModalHandler} modalImg={this.state.modalImage}/>
-        <ModalWindow modal={this.state.showModal} modalHandler={this.hideModalHandler} modalImage={this.state.modalImage}/>
+        <ModalWindow modal={this.state.showModal} modalHandler={this.hideModalHandler} 
+                    modalImage={this.state.modalImage} userName={this.state.userName}/>
       </div>
     );
   }
