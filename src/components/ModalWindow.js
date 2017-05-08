@@ -18,24 +18,46 @@ export const ModalWindow = (props) => {
 
     }
 
-    let modalImageStyle = {
+    let modalImageContainer = {
+        
         position: 'absolute',
         top: '10%',
         left: '20%',
-        width: 'auto',
-        maxWidth: '60%',
-        height: 'auto',
         zIndex: '22'
     }
 
-    let userNameStyle = {
-        color: '#ffffff',
+    let modalImage = {
+        
+         width: 'auto',
+         maxWidth: '60%',
+         height: 'auto',
+    }
+
+    let userNameStyle = {     
+        marginTop:'-30px',
         fontSize: '1.2em'
     }
+
+    let modalTxtContainer = {
+        
+        position:'relative',
+        width:'200px',
+        left:'130px',
+        margin:'30px 0 0 0',
+        display:'block',
+        textAlign:'left',
+        color:'#ffffff'
+    }
+
     return (
         <div style={modalStyle} onClick={props.modalHandler}>
-            <img style={modalImageStyle} src={props.modalImage} />
-            <h2 style={userNameStyle}>{props.userName}</h2>
+            <div style={modalImageContainer}>
+                <img style={modalImage} src={props.modalImage} alt=""/>
+                    <div style={modalTxtContainer}>
+                        <h2 style={userNameStyle}>{props.userName}</h2>
+                        <a onClick={function(){window.open(props.portfolioURL,"_blank");window.focus();}} target="_blank">{props.portfolioURL}</a>
+                    </div>
+            </div>
         </div>
     )
 

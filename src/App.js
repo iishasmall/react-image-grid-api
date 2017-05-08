@@ -13,14 +13,14 @@ class App extends Component {
   state = {
     items: [],
     currentGallery: constants.GALLERY_CHOICE_DEFAULT,
-    showModal:false,
-    modalImage:'',
-    userName:''
+    showModal: false,
+    modalImage: '',
+    userName: '',
+    portfolioURL:''
   };
-  
-  
-  
-  randomNum = () =>{
+
+
+  randomNum = () => {
     let randNum = new RandomNum(constants.RANGE_START, constants.RANGE_END);
     return randNum.getNum();
   }
@@ -47,45 +47,41 @@ class App extends Component {
   // show Image Clicked
   showModalHandler = (evt) => {
     evt.preventDefault();
-   
-   let index = Number(evt.currentTarget.getAttribute('id'))
-    
+
+    let index = Number(evt.currentTarget.getAttribute('id'))
+
     this.setState({
-      modalImage : evt.target.getAttribute('src').toString(),
-      userName: this.state.items[index].user.name
+      modalImage: evt.target.getAttribute('src').toString(),
+      userName: this.state.items[index].user.name,
+      portfolioURL: this.state.items[index].user.links.html
     });
 
     this.showModal();
   }
-  
+
   hideModalHandler = (evt) => {
     evt.preventDefault();
     this.hideModal();
   }
-  
-//hide modal
+
+  //hide modal
   hideModal = () => {
     this.setState({
-      showModal:false
+      showModal: false
     });
   }
 
-//show Modal
-  showModal = () =>{
+  //show Modal
+  showModal = () => {
     this.setState({
-      showModal:true
+      showModal: true
     })
   }
 
-  
-  
 
   componentDidMount() {
-
     this.getJSON();
   }
-
-
 
   getJSON = () => {
 
@@ -95,7 +91,6 @@ class App extends Component {
       callbackUrl: constants.CALLBACK_URL
     });
 
-
     unsplash.search.photos(this.state.currentGallery, this.randomNum(), constants.IMAGE_AMOUNT)
       .then(toJson)
       .then(json => {
@@ -104,19 +99,38 @@ class App extends Component {
         this.setState({ items })
         
       });
+
+     
+  }
+
+  resizePhotos = (unsplash,currentGallery) => {
+
+    
   }
 
 
   render() {
     const submitHandler = this.state.currentGallery ? this.handleSubmit : this.handleEmptySubmit
-  
+
     return (
       <div className="App">
-        <ImageGalleryForm handleInputChange={this.handleInputChange}
+
+        <ImageGalleryForm
+          handleInputChange={this.handleInputChange}
           handleSubmit={submitHandler} />
-        <ImageGallery items={this.state.items} imageClicked={this.showModalHandler} modalImg={this.state.modalImage}/>
-        <ModalWindow modal={this.state.showModal} modalHandler={this.hideModalHandler} 
-                    modalImage={this.state.modalImage} userName={this.state.userName}/>
+
+        <ImageGallery
+          items={this.state.items}
+          imageClicked={this.showModalHandler}
+          modalImg={this.state.modalImage} />
+
+        <ModalWindow
+          modal={this.state.showModal}
+          modalHandler={this.hideModalHandler}
+          modalImage={this.state.modalImage}
+          userName={this.state.userName}
+          portfolioURL={this.state.portfolioURL} />
+          
       </div>
     );
   }

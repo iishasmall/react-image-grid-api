@@ -2,21 +2,47 @@
   text-align: center;
 }
 
+ul{
+  list-style-type:none;
+}
+
+
 .image-grid {
-  list-style: none;
+  list-style-type: none;
+  display: block;
 }
 
 .image-grid li {
- display:inline-block;
+ width:150px;
+ height:150px;
+ overflow:hidden;
  list-style:none;
+ list-style-type:none;
  padding:5px;
+ display:inline-block;
 }
 
 .image-grid li img {
-  max-height:200px;
+  object-fit:cover;
+  width:150px;
+  height:150px;
   border: 1px solid #000000;
+  list-style:none;
+  list-style-type:none;
+  cursor:pointer;
 }
 
+.image-grid li:before{
+  content:"";
+}
+
+
+.fadeIn {
+ opacity:1;
+ transition: opacity .25s ease-in-out;
+ -moz-transition: opacity .25s ease-in-out;
+ -webkit-transition: opacity .25s ease-in-out;
+}
 
 
 
