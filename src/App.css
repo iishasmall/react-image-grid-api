@@ -2,40 +2,10 @@
   text-align: center;
 }
 
-ul{
-  list-style-type:none;
+
+body{
+  background:grey;
 }
-
-
-.image-grid {
-  list-style-type: none;
-  display: block;
-}
-
-.image-grid li {
- width:150px;
- height:150px;
- overflow:hidden;
- list-style:none;
- list-style-type:none;
- padding:5px;
- display:inline-block;
-}
-
-.image-grid li img {
-  object-fit:cover;
-  width:150px;
-  height:150px;
-  border: 1px solid #000000;
-  list-style:none;
-  list-style-type:none;
-  cursor:pointer;
-}
-
-.image-grid li:before{
-  content:"";
-}
-
 
 .fadeIn {
  opacity:1;

@@ -16,7 +16,7 @@ class App extends Component {
     showModal: false,
     modalImage: '',
     userName: '',
-    portfolioURL:''
+    portfolioURL: ''
   };
 
 
@@ -97,16 +97,12 @@ class App extends Component {
 
         let items = json.results;
         this.setState({ items })
-        
+        console.log(items);
       });
 
-     
+
   }
 
-  resizePhotos = (unsplash,currentGallery) => {
-
-    
-  }
 
 
   render() {
@@ -130,7 +126,7 @@ class App extends Component {
           modalImage={this.state.modalImage}
           userName={this.state.userName}
           portfolioURL={this.state.portfolioURL} />
-          
+
       </div>
     );
   }
