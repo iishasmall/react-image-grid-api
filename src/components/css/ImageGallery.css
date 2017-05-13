@@ -17,7 +17,7 @@ ul{
  display:inline-block;
 }
 
-.image-grid li img {
+.image-grid-image {
   object-fit:cover;
   width:150px;
   height:150px;
@@ -29,4 +29,10 @@ ul{
 
 .image-grid li:before{
   content:"";
+}
+
+.image-loading img{
+    width:50px;
+    height:50px;
+    border:none;
 }

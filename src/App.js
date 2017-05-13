@@ -3,6 +3,8 @@ import Unsplash, { toJson } from "unsplash-js";
 import { ImageGallery } from './components/ImageGallery';
 import { ImageGalleryForm } from './components/ImageGalleryForm';
 import { ModalWindow } from './components/ModalWindow';
+import { Header } from './components/Header';
+import { ContentBody } from './components/ContentBody';
 import RandomNum from "./utils/RandomNum";
 import * as constants from './config/Config';
 
@@ -13,6 +15,8 @@ class App extends Component {
   state = {
     items: [],
     currentGallery: constants.GALLERY_CHOICE_DEFAULT,
+    header: constants.GALLERY_TITLE,
+    contentBody: constants.GALLERY_EXPLANATION,
     showModal: false,
     modalImage: '',
     userName: '',
@@ -110,6 +114,8 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Header header={this.state.header} />
+        <ContentBody contentBody={this.state.contentBody} />
 
         <ImageGalleryForm
           handleInputChange={this.handleInputChange}

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './css/ImageGallery.css';
+import loading from '../icons/loading.gif';
 
 export const ImageGallery = (props, index) => {
 
@@ -12,6 +13,7 @@ export const ImageGallery = (props, index) => {
 
         return <li key={index}>
           <img
+            className={"image-grid-image"}
             id={index}
             src={item.urls.regular}
             onClick={props.imageClicked}
@@ -19,7 +21,7 @@ export const ImageGallery = (props, index) => {
         </li>
 
       })
-        : <li>Loading...</li>
+        : <li className="image-loading"> <img src={loading} alt="" /> </li>
       }
 
     </ul>

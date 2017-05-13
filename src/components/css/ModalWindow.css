@@ -1,13 +1,13 @@
 .modal-image-container{
   position: absolute;
-  top: 10%;
-  left: 20%;
+  top: 15%;
+  left: 5%;
   z-index: 22;
 }
 
 .modal-image{
    width: auto;
-   max-width: 60%;
+   max-width: 40%;
    height: auto;
 }
 
@@ -19,11 +19,15 @@
 .modal-txt-container{
     position: relative;
     width: 200px;
-    left: 20%;
+    left: 30%;
     margin: 30px 0 0 0;
     display: block;
     text-align: left;
     color: #ffffff;
+}
+
+a{
+    cursor:pointer;
 }
 
 
