@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './css/ImageGallery.css';
 import loading from '../icons/loading.gif';
 
+
 export const ImageGallery = (props, index) => {
 
 
@@ -12,6 +13,7 @@ export const ImageGallery = (props, index) => {
       {props.items.length ? props.items.map((item, index) => {
 
         return <li key={index}>
+
           <img
             className={"image-grid-image"}
             id={index}

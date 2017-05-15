@@ -10,6 +10,8 @@ export const IMAGE_PAGE = 1;
 export const RANGE_START = 1;
 export const RANGE_END = 5;
 
+
+
 export const GALLERY_TITLE = "UNSPLASH IMAGE GALLERY";
 
 export const GALLERY_EXPLANATION = " if you put in a category like cats, or flowers in the textbox and hit submit you will see new images in the grid";

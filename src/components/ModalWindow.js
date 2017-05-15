@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './css/ModalWindow.css';
+import closeBtn from '../icons/close-btn.svg';
 
 export const ModalWindow = (props) => {
 
@@ -19,15 +20,16 @@ export const ModalWindow = (props) => {
     }
 
     return (
-        <div style={modalStyle} onClick={props.modalHandler}>
+        <div style={modalStyle}>
             <div className="modal-image-container">
+                <img className="modal-close-btn" src={closeBtn} alt="close-btn" onClick={props.modalHandler} />
                 <img className="modal-image" src={props.modalImage} alt="" />
                 <div className="modal-txt-container">
                     <h2 className="modal-user-name">{props.userName}</h2>
                     <a onClick={function () { window.open(props.portfolioURL, "_blank"); window.focus(); }} target="_blank">{props.portfolioURL}</a>
                 </div>
             </div>
-        </div>
+        </div >
     )
 
 }

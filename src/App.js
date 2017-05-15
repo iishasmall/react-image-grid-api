@@ -101,7 +101,7 @@ class App extends Component {
 
         let items = json.results;
         this.setState({ items })
-        console.log(items);
+        //console.log(items);
       });
 
 

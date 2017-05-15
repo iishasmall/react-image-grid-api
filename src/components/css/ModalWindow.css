@@ -6,28 +6,35 @@
 }
 
 .modal-image{
-   width: auto;
-   max-width: 40%;
-   height: auto;
+  width: auto;
+  max-width: 40%;
+  height: auto;
 }
 
 .modal-user-name {     
-   margin-top:-30px;
-   font-size: 1.2em;
+  margin-top:-30px;
+  font-size: 1.2em;
 }
 
-.modal-txt-container{
-    position: relative;
-    width: 200px;
-    left: 30%;
-    margin: 30px 0 0 0;
-    display: block;
-    text-align: left;
-    color: #ffffff;
+.modal-txt-container {
+  position: relative;
+  width: 200px;
+  left: 30%;
+  margin: 30px 0 0 0;
+  display: block;
+  text-align: left;
+  color: #ffffff;
 }
 
-a{
-    cursor:pointer;
+.modal-close-btn {
+  position:absolute;
+  margin-left: 5px;
+  left: 70%;
+  width:30px;
+  height:30px;
+  cursor:pointer;
 }
+
+a { cursor:pointer;}
 
 
